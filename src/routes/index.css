@@ -1,0 +1,54 @@
+.waving-hand {
+  display: block;
+  animation: wave 2s ease-in-out infinite 2s;
+}
+
+ul.l {
+  list-style-type: disc;
+  margin-left: 1rem;
+}
+
+ul.l li {
+  display: flex;
+  align-items: center;
+  column-gap: 0.25rem;
+}
+
+ul.l li svg {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.5rem;
+  color: --color-text;
+  fill: currentColor;
+}
+
+@media (min-width: --breakpoint-md) {
+  ul.l {
+    margin-left: 2.5rem;
+  }
+}
+
+@keyframes wave {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(15deg) translateY(-5px);
+  }
+  30% {
+    transform: rotate(-15deg) translateY(-5px);
+  }
+  40% {
+    transform: rotate(10deg) translateY(-5px);
+  }
+  60% {
+    transform: rotate(-10deg) translateY(-5px);
+  }
+  70% {
+    transform: rotate(5deg) translateY(-5px);
+  }
+}

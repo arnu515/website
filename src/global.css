@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", sans-serif;
+  --font-sans--font-feature-settings: "calt", "zero", "ss01", "cv10", "cv08",
+    "cv05";
+  --font-mono: "Iosevka", monospace;
+  --font-mono--font-feature-settings: "ss14";
+
+  --color-rosewater: rgb(245, 224, 220);
+  --color-flamingo: rgb(242, 205, 205);
+  --color-pink: rgb(245, 194, 231);
+  --color-mauve: rgb(203, 166, 247);
+  --color-red: rgb(243, 139, 168);
+  --color-maroon: rgb(235, 160, 172);
+  --color-peach: rgb(250, 179, 135);
+  --color-yellow: rgb(249, 226, 175);
+  --color-green: rgb(166, 227, 161);
+  --color-teal: rgb(148, 226, 213);
+  --color-sky: rgb(137, 220, 235);
+  --color-sapphire: rgb(116, 199, 236);
+  --color-blue: rgb(137, 180, 250);
+  --color-lavender: rgb(180, 190, 254);
+  --color-text: rgb(205, 214, 244);
+  --color-subtext1: rgb(186, 194, 222);
+  --color-subtext0: rgb(166, 173, 200);
+  --color-overlay2: rgb(147, 153, 178);
+  --color-overlay1: rgb(127, 132, 156);
+  --color-overlay0: rgb(108, 112, 134);
+  --color-surface2: rgb(88, 91, 112);
+  --color-surface1: rgb(69, 71, 90);
+  --color-surface0: rgb(49, 50, 68);
+  --color-base: rgb(30, 30, 46);
+  --color-mantle: rgb(24, 24, 37);
+  --color-crust: rgb(17, 17, 27);
+}
+
+@layer base {
+  a {
+    @apply text-mauve no-underline;
+    transition: color 300ms ease;
+  }
+  a:hover {
+    @apply text-pink underline;
+  }
+}
