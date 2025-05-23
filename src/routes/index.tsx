@@ -1,10 +1,14 @@
 import { component$, useSignal, useStylesScoped$, useVisibleTask$ } from "@builder.io/qwik";
 import { Link, type DocumentHead } from "@builder.io/qwik-city";
 import styles from "./index.css?inline"
+import { getSuggestedPosts } from "~/fetchers/posts";
+
+export { getSuggestedPosts }
 
 export default component$(() => {
   useStylesScoped$(styles)
 
+  const posts = getSuggestedPosts()
   const email = useSignal("")
 
   // display email once the website loads
@@ -111,6 +115,22 @@ export default component$(() => {
         <h2 class="text-2xl font-bold md:text-3xl lg:text-4xl">Selected Posts</h2>
         <Link href="/posts" class="bg-surface1 text-text hover:text-text hover:bg-surface0 transition-colors duration-200 hover:no-underline px-2 py-1 rounded border border-overlay0">View All</Link>
       </div>
+      <dl class="mt-8 ml-4 md:ml-8 list-disc">
+        {posts.value.map((post) => (
+        <>
+          <dt class="text-xl pt-4">
+            <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+            <span class="text-overlay1 font-mono text-sm mx-2">{post.created.getFullYear()}-{post.created.getMonth()}-{post.created.getDate()}{post.edited && '*'}</span>
+            <svg aria-label="Suggested" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-peach/70 inline-block ml-2 mb-1">
+              <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+            </svg>
+          </dt>
+          <dd class="text-overlay2 ml-2">
+            {post.summary}
+          </dd>
+        </>
+        ))}
+      </dl>
     </main>
   );
 });
