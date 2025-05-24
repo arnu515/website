@@ -38,7 +38,7 @@ export default component$(() => {
                 </svg>
               )}
             </dt>
-            <dd class="text-overlay2 ml-2">{post.summary}</dd>
+            <dd class="text-overlay2 ml-2">{post.description}</dd>
           </>
         ))}
       </dl>

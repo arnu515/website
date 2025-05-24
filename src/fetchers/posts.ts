@@ -4,7 +4,7 @@ import * as path from "node:path";
 export type PostFrontmatter = {
   slug: string;
   title: string;
-  summary: string;
+  description: string;
   tags: string[];
   suggested: boolean;
   created: Date;
@@ -28,10 +28,10 @@ export function normalizeFrontmatter(
       typeof frontmatter.title === "string"
         ? frontmatter.title
         : "Unknown title",
-    summary:
-      typeof frontmatter.summary === "string"
-        ? frontmatter.summary
-        : "Unknown summary",
+    description:
+      typeof frontmatter.description === "string"
+        ? frontmatter.description
+        : "Unknown description",
     tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
     suggested:
       typeof frontmatter.suggested === "boolean"
