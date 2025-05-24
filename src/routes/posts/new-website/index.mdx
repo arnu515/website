@@ -1,0 +1,103 @@
+---
+title: Welcome to my new website!
+description: A(nother) rewrite of my website using the qwik framework.
+created: 2025-05-23T01:02:03Z
+suggested: true
+---
+
+Hello! You're currently looking at my brand new website (until I inevitably rewrite it again...)!
+
+It's built using [Qwik](https://qwik.dev), a _revolutionary_ JavaScript framework, which uses
+_[resumability](https://qwik.dev/docs/concepts/resumable/)_ over hydration, like traditional SSR
+frameworks. This means that after the page is rendered on the server and sent to the browser,
+the client-side framework does not have to do all that rendering work again on the browser side
+to bring interactivity (a concept known as _hydration_). Instead, Qwik's client bundle just "resumes"
+the execution of interactive JavasScript, i.e. mount-hooks, event handlers, etc. on the client side
+and picks up where the server left off. Qwik divides the client bundle into chunks, and fetches and
+runs them only when needed, theoretically resulting in a very fast experience.
+
+I've been wanting to try Qwik for quite some time now, but have not had the opportunity yet because
+the things I make for work et al. demand a framework whose name known by more than one person. There
+are also a hundred other technologies I've also been wanting to try, like [Rust](https://rust-lang.org),
+[Zig](https://ziglang.org), [Gleam](https://gleam.run), [Erlang](https://erlang.org),
+[Elixir](https;//elixir-lang.org), [Lisp Flavored Erlang](https://lfe.io), [Kotlin](https://kotlinlang.org),
+just to name the languages I've been wanting to try! And if we focus only on JS, we have [React](https://react.dev),
+[Preact](https://preactjs.com), [Svelte](https://svelte.dev), [Solid](https://solidjs.com), and now [Qwik](https://qwik,dev)
+being the frameworks I have on my roster.
+
+Now yes, this website is certainly not one that demands the most interactivity and performance optimised
+framework, because it's literally only static HTML as of now. It could've just been Rust + HTMX, and I
+would've finished building it in an afternoon, but, this is **my** website, and _I_ get to decide what
+it's made of! I use my personal side projects as a way to learn new technology and techniques, so I chose
+Qwik this time. I do plan on using Qwik for some other side-projects, hopefully ones with more
+interactivity, and I'll certainly post my thoughts on this website soon!
+
+## This site was not as simple!
+
+This site _was_ not as simple as it is right now. Currently,
+[if you look at the source code](https://github.com/arnu515/website), blog content is present right in the
+filesystem, and it is compiled from markdown to HTML at _build_ time. This does mean that if I have to
+make even a small change, I have to deploy the website. Also, edit history of all my posts will be there
+on GitHub (unless I rebase and force-push of course!).
+
+I did not like that option earlier. Part of me was chasing complexity, I wanted to use everything I know
+to build this website. One of my initial plans was to implement the server-side rendering in Rust, because
+Node uses too much memory. Qwik injects a bunch of attributes and comments into your HTML, which are used
+by the client bundle to "resume" execution. I wanted to write Rust code that would create those attributes
+and comments in the HTML, so the Qwik client bundle could resume, without having to run a NodeJS server.
+
+That is obviously very ambitious, and I gave up on that thought after not being able to find the
+documentation for this "protocol" used by Qwik. Yes, I didn't look hard enough.
+
+Once I had decided upon Qwik, I planned on using [Vercel](https://vercel.com) for deployment, and I wanted
+to deploy this site on the [Edge](https://vercel.com/docs/edge-network). Well, this is how it is deployed
+right now, but initially, I had planned on storing all my blog posts on some database. [Turso](https://turso.tech)
+came to mind, because as far as I remembered, they were built on [Fly.io](https://fly.io), which had like
+thirty locations, and Turso gives you five hundred databases on its free tier. I wanted to replicate my
+website's database in lots of locations so that the Vercel Edge function could choose the one nearest to
+it, giving me very fast response times. Unfortunately, I found out that new Turso users would not get
+databases on Fly.io anymore, but on AWS, and without replication support, so I threw that plan out of the
+window.
+
+And here we are right now, a simple static website which is just HTML (+ the Qwik JavaScript client bundle
++ the CSS, if you're going to be _that_ pedantic), still deployed on the Vercel Edge, with reasonably fast
+access times. I could do better, but this is _enough_ for now.
+
+## You will see changes
+
+Be prepared to see a ton of changes to this website.
+
+I still have to add quite a few more things. For example, there is no table-of-contents for my articles,
+the markdown features are pretty bare-bones (using Qwik City's built-in MDX support with remark/rehype),
+and the code blocks are pretty bare-bones.
+
+```rust
+fn main() {
+  println!("Hello, world!")
+} 
+```
+
+They're highlighted using [Shiki](https://shiki.style), which uses textmate grammars. I'd like to use
+treesitter grammars, since that's what my [editor](https://helix-editor.com) uses, allowing me to see
+exactly how the code would be highlighted on the website from my editor. The code blocks are also
+pretty bare-bones, since it currently shows the code alone, there's no copy button, line numbers,
+line highlights, execution, or other fancy features. I'll add them as I see a need (and time).
+
+I want to explore uncharted territory (at least for me) with this website. I'm waiting for
+[Typst's](https://typst.app) HTML suppport to get better, and I want to use that to write my posts
+instead of MDX. I've also heard of djot, but haven't looked much into it. I take inspiration from
+[fasterthanli.me](https://fasterthanli.me)'s website. They have their own framework written in Rust,
+and they deploy to multiple servers in different regions. They also have an admin panel built right
+into the website for faster deploys, which is quite cool!
+
+I'll be tweaking and changing this website, and all of that will be visible to the public at the
+site's [GitHub repository](https://github.com/arnu515/website)!
+
+## Current tech stack
+
+This website is built using [Qwik JS](https://qwik.dev) and Qwik City. It uses
+[TailwindCSS](https://tailwindcss.com) for styling. Some content is written using [MDX](https://mdxjs.com),
+and code is highlighted with [Shiki](https://shiki.style). For other technologies I haven't mentioned,
+please take a look at the [repository](https://github.com/arnu515/website).
+
+It is deployed on Vercel, using Qwik's static adapter, which compiles this site down to plain HTML.
