@@ -13,10 +13,20 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export default component$(() => {
-  return <>
-    <Slot />
-    <footer>
-      <p class="text-center text-overlay1 text-sm">This website is still in development! <a href="https://github.com/arnu515/website" class="font-mono text-xs">source code</a></p>
-    </footer>
-  </>;
+  return (
+    <>
+      <Slot />
+      <footer>
+        <p class="text-overlay1 text-center text-sm">
+          This website is still in development!{" "}
+          <a
+            href="https://github.com/arnu515/website"
+            class="font-mono text-xs"
+          >
+            source code
+          </a>
+        </p>
+      </footer>
+    </>
+  );
 });

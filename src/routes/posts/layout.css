@@ -1,56 +1,57 @@
 .content h1 {
-  @apply text-xl md:text-2xl lg:text-4xl py-6 font-extrabold
+  @apply py-6 text-xl font-extrabold md:text-2xl lg:text-4xl;
 }
 .content h2 {
-  @apply text-lg md:text-xl lg:text-3xl py-4 font-bold
+  @apply py-4 text-lg font-bold md:text-xl lg:text-3xl;
 }
 .content h3 {
-  @apply text-lg md:text-xl lg:text-2xl py-3 font-bold
+  @apply py-3 text-lg font-bold md:text-xl lg:text-2xl;
 }
 .content h4 {
-  @apply text-lg md:text-xl lg:text-2xl py-3 font-medium
+  @apply py-3 text-lg font-medium md:text-xl lg:text-2xl;
 }
 .content h5 {
-  @apply md:text-lg lg:text-xl py-3 font-medium
+  @apply py-3 font-medium md:text-lg lg:text-xl;
 }
 .content h6 {
-  @apply md:text-lg lg:text-xl py-3 font-medium font-mono
+  @apply py-3 font-mono font-medium md:text-lg lg:text-xl;
 }
 
 .content p {
-  @apply font-mono text-lg py-4
+  @apply py-4 font-mono text-lg;
 }
 
 .content hr {
-  @apply border-text/50 border-t-2 w-[90%] my-4 mx-auto;
+  @apply border-text/50 mx-auto my-4 w-[90%] border-t-2;
 }
 
 .content blockquote {
-  @apply border-l-3 border-mauve/50 px-4 my-4
+  @apply border-mauve/50 my-4 border-l-3 px-4;
 }
 
 .content ol {
-  @apply m-4 list-decimal
+  @apply m-4 list-decimal;
 }
 
 .content ul {
-  @apply m-4 list-disc
+  @apply m-4 list-disc;
 }
 
-.content * ul, .content * ol {
-  @apply mx-4 my-1
+.content * ul,
+.content * ol {
+  @apply mx-4 my-1;
 }
 
 .content table {
-  @apply w-full text-sm text-left rtl:text-right rounded-lg shadow-md m-4
+  @apply m-4 w-full rounded-lg text-left text-sm shadow-md rtl:text-right;
 }
 
 .content table thead {
-  @apply bg-surface1 text-subtext1 uppercase text-sm font-medium font-sans
+  @apply bg-surface1 text-subtext1 font-sans text-sm font-medium uppercase;
 }
 
 .content table thead th {
-  @apply px-2 py-1
+  @apply px-2 py-1;
 }
 
 .content table tbody {
@@ -58,11 +59,11 @@
 }
 
 .content table tbody td {
-  @apply py-1 px-2
+  @apply px-2 py-1;
 }
 
 .content pre {
-  @apply p-4 my-4 bg-surface0 border border-text rounded-lg overflow-auto;
+  @apply bg-surface0 border-text my-4 overflow-auto rounded-lg border p-4;
 }
 
-@reference "../../global.css"
+@reference "../../global.css";

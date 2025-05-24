@@ -1,20 +1,25 @@
-import { component$, useSignal, useStylesScoped$, useVisibleTask$ } from "@builder.io/qwik";
+import {
+  component$,
+  useSignal,
+  useStylesScoped$,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import { Link, type DocumentHead } from "@builder.io/qwik-city";
-import styles from "./index.css?inline"
+import styles from "./index.css?inline";
 import { getSuggestedPosts } from "~/fetchers/posts";
 
-export { getSuggestedPosts }
+export { getSuggestedPosts };
 
 export default component$(() => {
-  useStylesScoped$(styles)
+  useStylesScoped$(styles);
 
-  const posts = getSuggestedPosts()
-  const email = useSignal("")
+  const posts = getSuggestedPosts();
+  const email = useSignal("");
 
   // display email once the website loads
   useVisibleTask$(() => {
-    email.value = atob("bWVAYWFybmF2cGFpLmlu")
-  })
+    email.value = atob("bWVAYWFybmF2cGFpLmlu");
+  });
 
   return (
     <main class="mx-auto max-w-screen-md px-10 py-20">
@@ -45,7 +50,12 @@ export default component$(() => {
             <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
             <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
           </svg>
-          Email me: {email.value ? <a href={`mailto:${email.value}`}>{email.value}</a> : <span class="inline-block w-36 h-3 bg-surface0 animate-pulse border border-transparent rounded-lg" />}
+          Email me:{" "}
+          {email.value ? (
+            <a href={`mailto:${email.value}`}>{email.value}</a>
+          ) : (
+            <span class="bg-surface0 inline-block h-3 w-36 animate-pulse rounded-lg border border-transparent" />
+          )}
         </li>
         <li>
           <svg
@@ -109,26 +119,45 @@ export default component$(() => {
           <a href="https://fostodon.org/arnu515">@arnu515@fostodon.org</a>
         </li>
       </ul>
-      <hr class="border-surface0 mx-auto my-8 md:my-12 lg:my-16 max-w-sm border-2 border-t" />
+      <hr class="border-surface0 mx-auto my-8 max-w-sm border-2 border-t md:my-12 lg:my-16" />
 
       <div class="flex items-center justify-between gap-4">
-        <h2 class="text-2xl font-bold md:text-3xl lg:text-4xl">Selected Posts</h2>
-        <Link href="/posts" class="bg-surface1 text-text hover:text-text hover:bg-surface0 transition-colors duration-200 hover:no-underline px-2 py-1 rounded border border-overlay0">View All</Link>
+        <h2 class="text-2xl font-bold md:text-3xl lg:text-4xl">
+          Selected Posts
+        </h2>
+        <Link
+          href="/posts"
+          class="bg-surface1 text-text hover:text-text hover:bg-surface0 border-overlay0 rounded border px-2 py-1 transition-colors duration-200 hover:no-underline"
+        >
+          View All
+        </Link>
       </div>
-      <dl class="mt-8 ml-4 md:ml-8 list-disc">
+      <dl class="mt-8 ml-4 list-disc md:ml-8">
         {posts.value.map((post) => (
-        <>
-          <dt class="text-xl pt-4">
-            <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-            <span class="text-overlay1 font-mono text-sm mx-2">{post.created.getFullYear()}-{post.created.getMonth()}-{post.created.getDate()}{post.edited && '*'}</span>
-            <svg aria-label="Suggested" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-peach/70 inline-block ml-2 mb-1">
-              <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
-            </svg>
-          </dt>
-          <dd class="text-overlay2 ml-2">
-            {post.summary}
-          </dd>
-        </>
+          <>
+            <dt class="pt-4 text-xl">
+              <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+              <span class="text-overlay1 mx-2 font-mono text-sm">
+                {post.created.getFullYear()}-{post.created.getMonth()}-
+                {post.created.getDate()}
+                {post.edited && "*"}
+              </span>
+              <svg
+                aria-label="Suggested"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="text-peach/70 mb-1 ml-2 inline-block size-5"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </dt>
+            <dd class="text-overlay2 ml-2">{post.summary}</dd>
+          </>
         ))}
       </dl>
     </main>
