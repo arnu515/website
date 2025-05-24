@@ -1,0 +1,68 @@
+.content h1 {
+  @apply text-xl md:text-2xl lg:text-4xl py-6 font-extrabold
+}
+.content h2 {
+  @apply text-lg md:text-xl lg:text-3xl py-4 font-bold
+}
+.content h3 {
+  @apply text-lg md:text-xl lg:text-2xl py-3 font-bold
+}
+.content h4 {
+  @apply text-lg md:text-xl lg:text-2xl py-3 font-medium
+}
+.content h5 {
+  @apply md:text-lg lg:text-xl py-3 font-medium
+}
+.content h6 {
+  @apply md:text-lg lg:text-xl py-3 font-medium font-mono
+}
+
+.content p {
+  @apply font-mono text-lg py-4
+}
+
+.content hr {
+  @apply border-text/50 border-t-2 w-[90%] my-4 mx-auto;
+}
+
+.content blockquote {
+  @apply border-l-3 border-mauve/50 px-4 my-4
+}
+
+.content ol {
+  @apply m-4 list-decimal
+}
+
+.content ul {
+  @apply m-4 list-disc
+}
+
+.content * ul, .content * ol {
+  @apply mx-4 my-1
+}
+
+.content table {
+  @apply w-full text-sm text-left rtl:text-right rounded-lg shadow-md m-4
+}
+
+.content table thead {
+  @apply bg-surface1 text-subtext1 uppercase text-sm font-medium font-sans
+}
+
+.content table thead th {
+  @apply px-2 py-1
+}
+
+.content table tbody {
+  @apply font-mono text-lg;
+}
+
+.content table tbody td {
+  @apply py-1 px-2
+}
+
+.content pre {
+  @apply p-4 my-4 bg-surface0 border border-text rounded-lg overflow-auto;
+}
+
+@reference "../../global.css"
