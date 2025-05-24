@@ -17,7 +17,8 @@ function parseDate(v: any) {
   return isNaN(date.getTime()) ? null : date
 }
 
-function normalizeFrontmatter(frontmatter: Record<string, unknown>): PostFrontmatter {
+export function normalizeFrontmatter(frontmatter: Record<string, unknown> | null | undefined): PostFrontmatter | null {
+  if (!frontmatter?.title) return null;
   return {
     slug: typeof frontmatter.slug === 'string' ? frontmatter.slug : "unknown-slug",
     title: typeof frontmatter.title === 'string' ? frontmatter.title : "Unknown title",
@@ -31,7 +32,7 @@ function normalizeFrontmatter(frontmatter: Record<string, unknown>): PostFrontma
 
 const getAllPosts = () => 
   Object.entries(import.meta.glob("../routes/posts/**/*.mdx", { import: 'frontmatter', eager: true }))
-    .map(([k, v]) => normalizeFrontmatter({...(v as any), slug: path.dirname(k).replace('routes/', '')}))
+    .map(([k, v]) => normalizeFrontmatter({...(v as any), slug: path.dirname(k).replace('routes/', '')})!)
     .sort((a, b) => b.created.getTime() - a.created.getTime())
 
 // eslint-disable-next-line qwik/loader-location
