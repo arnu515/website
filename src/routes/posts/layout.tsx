@@ -10,10 +10,10 @@ export default component$(() => {
   useStyles$(styles);
 
   const head = useDocumentHead();
-  const frontmatter = normalizeFrontmatter({
+  const frontmatter = normalizeFrontmatter(Object.keys(head.frontmatter).length !== 0 ? {
     ...head.frontmatter,
     title: head.title,
-  });
+  } : null);
 
   return (
     <div class="prose-invert mx-auto max-w-screen-md px-10 py-20">
