@@ -7,5 +7,4 @@ static_sites:
       branch: master
       deploy_on_push: true
     dockerfile_path: Dockerfile
-    environment_slug: node-js
     output_dir: /app/dist
