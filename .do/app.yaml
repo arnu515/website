@@ -1,0 +1,11 @@
+name: website
+
+static_sites:
+  - name: website
+    github:
+      repo: arnu515/website
+      branch: master
+      deploy_on_push: true
+    dockerfile_path: Dockerfile
+    environment_slug: node-js
+    output_dir: /app/dist
