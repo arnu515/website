@@ -6,6 +6,6 @@ spec:
         repo: arnu515/website
         branch: master
         deploy_on_push: true
-      dockerfile_path: Dockerfile
+      dockerfile_path: .do/Dockerfile
       output_dir: /app/dist
   
