@@ -34,7 +34,7 @@ export default component$(() => {
             <div class="text-overlay2 flex items-center gap-2 font-mono text-sm">
               <span class="text-overlay1 font-sans text-xs">Tags:</span>
               {frontmatter.tags.map((i) => (
-                <span>{i}</span>
+                <span key={i}>{i}</span>
               ))}
             </div>
           </div>

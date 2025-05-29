@@ -1,6 +1,6 @@
 import { Slot, component$, useStylesScoped$ } from "@builder.io/qwik";
 import styles from "./index.css?inline";
-import { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
 const Header = () => (
   <header class="mx-auto my-10 flex max-w-screen-lg flex-col items-center justify-between gap-2 px-6 md:flex-row">
@@ -442,7 +442,7 @@ export default component$(() => {
               </li>
             </ul>
           </section>
-        <section className="skills">
+        <section class="skills">
           <article>
             <h3>Frontend Development</h3>
             <ul>
@@ -480,7 +480,7 @@ export default component$(() => {
         </section>
       </main>
       <footer class="my-8">
-        <p className="text-center font-mono text-lg text-subtext2">Contact me: <a href="mailto:me@aarnavpai.in">me@aarnavpai.in</a></p>
+        <p class="text-center font-mono text-lg text-subtext2">Contact me: <a href="mailto:me@aarnavpai.in">me@aarnavpai.in</a></p>
       </footer>
     </>
   );
