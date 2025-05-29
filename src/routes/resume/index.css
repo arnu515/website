@@ -1,0 +1,50 @@
+main {
+  @apply mx-auto max-w-screen-lg px-4 py-8;
+}
+
+main h2 {
+  @apply border-overlay1 mt-8 mb-4 border-b pb-2 text-xl font-extrabold md:text-2xl;
+}
+
+.experience {
+  @apply my-4 grid grid-cols-1 gap-4 lg:grid-cols-2;
+}
+
+.experience h3, .languages h3, .skills h3 {
+  @apply my-2 flex items-center gap-3 text-lg font-bold;
+}
+
+.experience h3 em {
+  @apply text-subtext1 ml-auto text-sm font-normal;
+}
+
+.languages ul {
+  @apply ml-4 grid grid-cols-2 md:grid-cols-4 gap-4
+}
+
+.languages li {
+  @apply flex items-center gap-2
+}
+
+.languages li svg {
+  @apply size-5;
+  fill: currentColor;
+}
+
+.languages li a {
+  @apply text-text text-lg;
+}
+
+.skills {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4
+}
+
+.skills ul {
+  @apply list-disc ml-4
+}
+
+.skills ul li {
+  @apply pt-1 font-mono
+}
+
+@reference "../../global.css";
