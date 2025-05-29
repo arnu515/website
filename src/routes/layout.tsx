@@ -1,5 +1,5 @@
 import { component$, Slot } from "@builder.io/qwik";
-import type { RequestHandler } from "@builder.io/qwik-city";
+import { useLocation, type RequestHandler } from "@builder.io/qwik-city";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -13,10 +13,11 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export default component$(() => {
+  const {url} = useLocation()
   return (
     <>
       <Slot />
-      <footer>
+      {!url.pathname.startsWith('/resume') && <footer class="print:hidden">
         <p class="text-overlay1 text-center text-sm">
           This website is still in development!{" "}
           <a
@@ -26,7 +27,7 @@ export default component$(() => {
             source code
           </a>
         </p>
-      </footer>
+      </footer>}
     </>
   );
 });
