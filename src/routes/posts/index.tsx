@@ -9,13 +9,31 @@ export default component$(() => {
 
   return (
     <>
-      <h1>My Posts</h1>
-      <hr class="border-surface0 mx-auto my-4 max-w-sm border-2 border-t md:my-6 lg:my-8" />
+      <h1 class="flex items-center gap-2 md:gap-4">
+        <Link href="/" title="Back" aria-label="Back">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-4 md:size-5 lg:size-7"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+            />
+          </svg>
+        </Link>{" "}
+        My Posts
+      </h1>
+      <hr class="border-surface0 mx-auto my-4 max-w-sm border-t-2 md:my-6 lg:my-8" />
 
       <dl class="mt-4 ml-4">
         {posts.value.map((post) => (
           <>
-            <dt class="pt-4 text-xl">
+            <dt class="pt-4 text-lg md:text-xl">
               <Link href={`/posts/${post.slug}`}>{post.title}</Link>
               <span class="text-overlay1 mx-2 font-mono text-sm">
                 {post.created.getFullYear()}-{post.created.getMonth()}-
@@ -38,7 +56,9 @@ export default component$(() => {
                 </svg>
               )}
             </dt>
-            <dd class="text-overlay2 ml-2">{post.description}</dd>
+            <dd class="text-overlay2 ml-2 text-sm md:text-[1rem]">
+              {post.description}
+            </dd>
           </>
         ))}
       </dl>
