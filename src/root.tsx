@@ -30,7 +30,14 @@ export default component$(() => {
       </head>
       <body lang="en" class="bg-base text-text">
         <RouterOutlet />
-        {!isDev && <ServiceWorkerRegister />}
+        {!isDev &&
+        <>
+          <ServiceWorkerRegister />
+
+          {/* TODO: Use partytown for this */}
+          <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+          <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerPolicy="no-referrer-when-downgrade"/></noscript>
+        </>}
       </body>
     </QwikCityProvider>
   );
