@@ -140,6 +140,15 @@ const Experience = () => (
     </article>
     <article>
       <h3>
+        Others
+      </h3>
+      <ul class="ml-4 list-disc">
+        <li>Participated in hacktoberfest, and hackathons hosted by open-source projects; I've gotten T-Shirts for those.</li>
+        <li>Enrolled in the <a href="https://partners.prisma.io">Prisma Partner Program</a>.</li>
+      </ul>
+    </article>
+    <article>
+      <h3>
         Technical Writing
         <a
           class="text-overlay2"
@@ -374,6 +383,29 @@ export default component$(() => {
               </li>
               <li>
                 Uses SvelteKit and X Ai.
+              </li>
+            </ul>
+          </PersonalProject>
+          <PersonalProject
+            title="SupportAddress (June 2025)"
+            description="Email-first support ticket system"
+            link="https://github.com/arnu515/supportaddress"
+          >
+            <ul class="list-disc ml-4">
+              <li>
+                Email-first support ticketing platform that lets customers send emails to create
+                support tickets.
+              </li>
+              <li>
+                Customers can avoid friction in signing up to a complicated website, and just use
+                their email client.
+              </li>
+              <li>Supports email attachments, and uses AI to automatically sort tickets into groups.</li>
+              <li>
+                Built for the Postmark Inbox Innovators challenge.
+              </li>
+              <li>
+                Uses Qwik and Supabase.
               </li>
             </ul>
           </PersonalProject>
