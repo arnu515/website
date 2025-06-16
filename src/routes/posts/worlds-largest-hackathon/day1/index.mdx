@@ -1,0 +1,154 @@
+---
+title: World's Largest Hackathon — Day 1
+description: AI sceptic (tries) building an app using AI
+created: 2025-06-16T16:35:03Z
+suggested: false
+---
+
+import Bolt1Image from "./bolt-1.png?jsx"
+import Bolt2Image from "./bolt-2.png?jsx"
+
+The [World's Largest Hackathon](https://hackathon.dev) is a hackathon hosted by the
+people at [bolt.new](https://bolt.new), which is an AI-powered app builder. The
+hackathon started on June 1st, but I started my project just now, at 8PM on June
+15th.
+
+# AI – make me an app!
+
+I needed ideas for a project. I asked Claude Sonnet 4 to give me a few ideas, I gave
+it a list of tools that I could use, including the services in the Builder Pack and
+those part of the challenges. Along with that, I also mentioned I had an SMTP server
+and an LLM completions API.
+
+I wish the builder pack included credits for some AI model like Claude, GPT, or
+Gemini. I had to *bring my own LLM*, which sucks, because as a student, it's really
+hard for me to get access to a credit card to pay these corporations. Another gripe
+I had was that many services in the Builder Pack still asked for a card even after
+applying a 100% discount coupon, including `bolt.new`, unfortunately.
+
+That aside, I didn't like any of the ideas, so I tried again with Gemini 2.5 Pro,
+which gave me an interesting "collaborative work tool". The rest of the idea was
+absolute garbage, filled with nonsense filler words that you'd expect from an AI
+answer and not making sense as a product overall, but it did steer me into an idea
+for this project. I asked the same LLM to refine this idea and tailor it to my
+needs, and `organised.today` was born!
+
+The name for that project did not come from any LLM, however. I decided on that
+simply by putting related adjectives into [IONOS](https://ionos.com)' domain finder
+tool and found one that looked nice. Unfortunately, `organized.today` was already
+taken, and me being from India, saw `organised.today` first, since that's how we
+spell it here, and the thought of the other spelling did not reach my mind until it
+was too late :( (I hope the judges don't accidentally visit the wrong website).
+
+# `bolt.new` initial impressions
+
+I've used `bolt.new` a total of once before. I usually use Vercel's `v0` instead,
+since it usually gives me a better experience for what I use it for. I use it _only_
+for UI prototyping. I do NOT use it for coding the actual features of my project,
+but only to give me a UI and a general idea of how the application should look like.
+Essentially, it allows me to not worry about making my website look beautiful or
+appealing, and I can focus more on its functionality.
+
+My one usage of `bolt`, from my history, was for essentially the same purpose, but
+using SvelteKit instead. Since `v0` only supports NextJS, React, and shadcn with
+TailwindCSS, a very specific tech stack, I had used `bolt` to build me a prototype
+of a SvelteKit application.
+
+This hackathon, however, expected me to use `bolt.new` for much more than that.
+According to the [rules](https://worldslargesthackathon.devpost.com/rules), "The
+Project can be built completely with Bolt.new or significantly started on Bolt.new
+as determined by Sponsor, in its sole discretion", so building-off of a simple
+prototype was a no-go.
+
+So I gave it a big prompt, asking it to generate a landing page for me which looked
+modern and sleek, so I don't have to focus on the design part. If AI has replaced
+one thing for me, it's definitely Figma.
+
+Unfortunately, `bolt` was not a smooth experience. The first time, it generated a
+project with NextJS instead of SvelteKit, even when I had asked it to use SvelteKit
+specifically; so I added "`USE SVELTEKIT WITH SHADCN-SVELTE. NO REACT, NO NEXTJS`"
+to the prompt, and created a new project.
+
+This time, it did use SvelteKit, and did create some thing, but the project when ran
+errored out with a Vite error claiming it could not find Svelte's tsconfig. I've
+seen that error before, and was sure that it would be fixed if I re-installed deps
+and restarted the dev server. When I `Ctrl-C`'d the built-in terminal and ran
+`npm i` (Stackblitz uses `npm` by default for some reason), it hung.
+
+After five minutes, I refreshed the page, and found an infinite "Setting up your
+project..." loading screen.
+
+<Bolt1Image alt={"A split screen with a chat window in the first 25%, and an editor"
++ "window in the next 75%. The editor window has an empty list of files, and has"
++ "\"Setting up your project...\" written in the work area. The chat window shows a"
++ "bunch of \"Create <filename>\" items."} />
+
+In the left chat window, there are a bunch of "`Create <filename>`" items, which
+should imply that those files would have been created, but the Files list is empty.
+And no, refreshing the page multiple times did not help either.
+
+So I opened [Stackblitz](https://stackblitz.com), the service that `bolt` uses under
+the hood (and the same company that built `bolt`) to start a Node server in the
+browser. It's pretty cool tech I've explored before, they use this this thing called
+[WebContainers](https://webcontainers.io/). Stackblitz lists projects `bolt` creates
+in a private "Bolt Collection". I opened the one created by my prompt, and
+lo-and-behold:
+
+<Bolt2Image alt={"A blank Stackblitz editor page. There are no files in the file"
++ "tree, the editor's work area has a bolt.new chat input, and the preview pane"
++ "just says \"Booting WebContainer\" with a checkmark."} />
+
+Absolutely nothing. The whole project is empty. Even though the prompt had completed
+and the app had been started (even if it errored out). So I ran the prompt again.
+
+This time, `bolt` failed to run `npm install`, because it made up a version
+of a dependency ([`formsnap`](https://npmjs.com/package/formsnap) version
+`^0.2.2`, when the latest version as of the time of writing was `2.0.1`.
+Version `0.2.1` did exist, but not `0.2.2`). That's a *HUGE* problem in
+"vibe-coding", when AI hallucinates versions of dependencies, or uses very old
+libraries, or even worse, hallucinates a random package. [This has happened
+before](https://en.wikipedia.org/wiki/Slopsquatting), so be very careful. I am
+certainly going to bump the package versions later.
+
+I bumped `formsnap` myself to version `^2.0.0`, and ran `npm install` again, but
+just like before, it hung indefinitely. So, I gave up for the day and downloaded
+the project as a ZIP file, since I ran out of tokens, and it was getting pretty
+late anyway.
+
+## Extras
+
+Here's the prompt I used (it was half-made by Gemini):
+
+> We're going to build an all-in-one email system for organisations. This email platform supports not just sending and receiving email, but it also organises and manages them using AI. It will also have a chat and meeting platform, all with its own AI integration.
+> 
+> The platform will be named `organised.today`. The landing page will be hosted at `https://get.organised.today`, and the main application will be hosted at `https://be.organised.today`. Do keep in mind that this is the English (UK) spelling of organised, not the US spelling. The codebase for both sites will be the same however. I'll manage that part, you don't have to worry about it.
+> 
+> Your task right now is to build the best landing page for this application. Make it look absolutely beautiful, make it look modern and sleek, use glass blur effects, gradients, glows, shadows, borders, and other sexy design appeals. I've attached a few pictures of landing pages of websites you can take inspiration from. 
+> 
+> What follows is a brief description of the application so you can build the landing page:
+> 
+> ```
+> `organised.today` is a revolutionary platform that unifies email, chat, and meeting functionalities into a single, intelligent workspace. Key features include:
+> 
+> *   **AI-Powered Email Management:** Smart email summarization, automated prioritization, intelligent draft generation, and action item extraction.
+> *   **Integrated Team Chat:** Real-time communication with AI-assisted translation, summarization, and meeting note generation.
+> *   **Seamless Meeting Platform:** Integrated video conferencing with AI-driven transcription and action item capture.
+> *   **Centralised Knowledge Base:** Connect all your documents, wikis, and shared resources for smart AI search.
+> ```
+> 
+> You should include a big hero section with a CTA button, a features section, a pricing page, an about page, and anything else you see fit. Make the application using sveltekit, and integrate it with supabase for authentication, db, and storage. It'll be deployed on netlify.
+> 
+> You must use tailwindcss and shadcn-svelte.
+> 
+> As for the preferred colors, I'd like you to use purple and blue for the accent color, but make the page have a white/black frosty design depending on light/dark mode.
+> 
+> USE SVELTEKIT WITH SHADCN-SVELTE. NO REACT, NO NEXTJS
+
+I had also attached the landing pages of [Linear](https://linear.app),
+[Trigger](https://trigger.dev) (OSS), [Appwrite](https://appwrite.io) (OSS),
+[Qdrant](https://qdrant.tech) (OSS), and [Infisical](https://infisical.com) (OSS).
+
+This is not an endorsement for any of those services, in fact, I don't use any of
+them myself. I just found their website looked nice and wanted `bolt` to use them
+as inspiration. I had them saved somewhere in my bookmarks or my memory.
+
