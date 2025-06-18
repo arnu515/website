@@ -1,0 +1,40 @@
+---
+title: World's Largest Hackathon — Day 3
+description: Hi lovelyweb.site!
+created: 2025-06-18T16:12:09Z
+suggested: false
+---
+
+Now it's time to add auth to the application! Supabase makes this
+really easy to do through their `@supabase/ssr` SDK. You know what
+makes this easier to do? Making `bolt` do it!
+
+Now since this is auth code, it requires me to double, triple check
+everything that `bolt` does, and I saw that, just like last time, it
+used older versions of dependencies. I had to update `@supabase/ssr`
+to the latest version and fix some deprecation warnings, but otherwise,
+I'd say that `bolt` did quite a great job, especially for its cutoff
+date.
+
+`bolt` was really useful in making the login/signup UI forms. It also
+made them look quite modern (when asked), so that's a plus too!
+
+I implemented both email-password auth and github auth. For registration,
+users create a profile and are sent an OTP via email, if they choose the
+email option. Otherwise, profile data is pulled from their GitHub (by
+Supabase).
+
+## organised.today is now lovelyweb.site
+
+I spent the rest of the day (and also most of yesterday) trying to think
+of another name. I tried asking every AI agent out there to suggest other
+names, but they would either suggest names that are already taken, names
+that would cost a fortune, or just straight up garbage.
+
+I gave up and started searching for random domain names. One of those
+included lovelyweb.site, and I saw that it wasn't taken. It'd be really
+funny if someone has that email address, y'know things like
+`my@lovelyweb.site`. If I wasn't able to think of anything else, this
+would certainly be it.
+
+**Update:** This is it! Welcome to lovelyweb.site!
