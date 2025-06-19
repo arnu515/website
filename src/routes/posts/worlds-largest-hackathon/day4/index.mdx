@@ -1,0 +1,25 @@
+---
+title: World's Largest Hackathon — Day 4
+description: Dashboard
+created: 2025-06-19T15:36:31Z
+suggested: false
+---
+
+I spent the most of this day implementing (and making `bolt` design)
+the dashboard of the app. I took inspiration from Notion's dashboard,
+with its sidebar and home page showing recent notes.
+
+I asked `bolt` to replicate it, but using this application's design,
+and it most certainly did a good job! I also included a bunch of
+components from `shadcn-svelte` so that bolt would use those from
+now on instead of writing its own styles for `<input>`s and things.
+
+Then I fixed small bugs in the UI, stuff like the search icon for an
+input being drawn below the input, hover backgrounds being way too
+light on light mode, etc.
+
+I also made `bolt` make the dashboard mobile-responsive, by auto-hiding
+the sidebar and adding a menu toggle for it.
+
+Finally, I asked `bolt` to make the email inbox UI with mock data and
+buttons for selecting mails, deleting them, archiving them, etc.
