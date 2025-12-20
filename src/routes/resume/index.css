@@ -1,29 +1,41 @@
 main {
-  @apply mx-auto max-w-screen-lg px-4 py-8;
+  @apply text-text mx-auto max-w-screen-lg px-4 py-12;
+}
+
+section {
+  @apply mb-12;
 }
 
 main h2 {
-  @apply border-overlay1 mt-8 mb-4 border-b pb-2 text-xl font-extrabold md:text-2xl;
+  @apply text-mauve border-surface1 mt-4 mb-6 border-b pb-2 text-2xl font-extrabold tracking-tight md:text-3xl;
 }
 
 .experience {
-  @apply my-4 grid grid-cols-1 gap-4 lg:grid-cols-2;
+  @apply grid grid-cols-1 gap-6 lg:grid-cols-2;
 }
 
-.experience h3, .languages h3, .skills h3 {
-  @apply my-2 flex items-center gap-3 text-lg font-bold;
+article {
+  @apply bg-surface0/30 hover:bg-surface0 border-surface0/50 hover:border-surface1 rounded-xl border p-6 transition-all hover:shadow-lg;
+}
+
+.experience h3,
+.skills h3,
+.languages h3,
+.exploring h3,
+.personal-project h3 {
+  @apply text-pink mb-2 flex items-center gap-3 text-xl font-bold;
 }
 
 .experience h3 em {
-  @apply text-subtext1 ml-auto text-sm font-normal;
+  @apply text-subtext0 ml-auto text-sm font-medium not-italic;
 }
 
 .languages ul {
-  @apply ml-4 grid grid-cols-2 md:grid-cols-4 gap-4
+  @apply mt-4 flex flex-wrap gap-3;
 }
 
 .languages li {
-  @apply flex items-center gap-2
+  @apply bg-surface0 border-surface1 hover:border-pink hover:text-pink flex items-center gap-2 rounded-md border px-3 py-2 text-sm font-medium transition-colors;
 }
 
 .languages li svg {
@@ -32,19 +44,27 @@ main h2 {
 }
 
 .languages li a {
-  @apply text-text text-lg;
+  @apply text-text hover:text-pink no-underline;
 }
 
 .skills {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4
+  @apply mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3;
 }
 
 .skills ul {
-  @apply list-disc ml-4
+  @apply mt-2 space-y-1;
 }
 
-.skills ul li {
-  @apply pt-1 font-mono
+.skills li {
+  @apply text-subtext0 font-mono text-sm;
+}
+
+.exploring p.description {
+  @apply text-subtext0 font-mono text-lg;
+}
+
+.project-grid {
+  @apply grid grid-cols-1 gap-6 md:grid-cols-2;
 }
 
 @reference "../../global.css";
