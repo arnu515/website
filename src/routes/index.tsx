@@ -15,10 +15,12 @@ export default component$(() => {
 
   const posts = getSuggestedPosts();
   const email = useSignal("");
+  const email2 = useSignal("");
 
   // display email once the website loads
   useVisibleTask$(() => {
     email.value = atob("bWVAYWFybmF2cGFpLmlu");
+    email2.value = atob("YWFybmF2LnBhaUByZXNlYXJjaC5paWl0LmFjLmlu");
   });
 
   return (
@@ -55,6 +57,14 @@ export default component$(() => {
             <a href={`mailto:${email.value}`}>{email.value}</a>
           ) : (
             <span class="bg-surface0 inline-block h-3 w-36 animate-pulse rounded-lg border border-transparent" />
+          )}
+          {email2.value ? (
+            <>
+              {" · "}
+              <a href={`mailto:${email2.value}`}>{email2.value}</a>
+            </>
+          ) : (
+            <span class="bg-surface0 inline-block h-3 w-48 animate-pulse rounded-lg border border-transparent" />
           )}
         </li>
         <li>
